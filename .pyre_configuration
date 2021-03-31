@@ -1,0 +1,5 @@
+{
+  "source_directories": ["."],
+  "ignore_all_errors": [".venv"],
+  "strict": true
+}
