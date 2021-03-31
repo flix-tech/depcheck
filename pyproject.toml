@@ -1,11 +1,19 @@
 [tool.poetry]
 name = "depcheck"
 version = "0.1.0"
-description = ""
-authors = ["Team Simplex <team.simplex@flixbus.com>"]
-maintainers = ["Team Simplex <team.simplex@flixbus.com>"]
-license = "Proprietary"
+authors = ["FlixMobility Tech <open-source+depcheck@flixbus.com>"]
+description = "Depcheck is a tool to check package-dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
+license = "MIT"
 readme = "README.md"
+homepage = "link"
+repository = "link"
+documentation = "link"
+keywords = [
+    "DepCheck",
+    "Dependency Checker",
+    "Clean Architecture",
+    "Hexagonal Architecture"
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"

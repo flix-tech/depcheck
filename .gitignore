@@ -16,3 +16,5 @@ report.xml
 htmlcov
 
 dist
+
+.DS_Store
