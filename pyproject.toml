@@ -23,6 +23,12 @@ PyYAML = "^5.4.1"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
 pyre-check = "^0.9.0"
+flake8 = "^3.9.0"
+yamllint = "^1.26.1"
+coverage = "^5.5"
+
+[tool.poetry.extras]
+pyre = ["pyre-check"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
