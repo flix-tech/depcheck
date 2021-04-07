@@ -21,8 +21,6 @@ pydeps = "^1.9.13"
 PyYAML = "^5.4.1"
 
 [tool.poetry.dev-dependencies]
-pydeps = "^1.9.13"
-PyYAML = "^5.4.1"
 pytest = "^6.2.2"
 pyre-check = "^0.9.0"
 
