@@ -1,15 +1,15 @@
 [tool.poetry]
 name = "depcheck"
 version = "0.1.0"
-authors = ["FlixMobility Tech <open-source+depcheck@flixbus.com>"]
-description = "Depcheck is a tool to check package-dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
+authors = ["FlixMobility Tech <open-source@flixbus.com>"]
+description = "Depcheck is a tool to check package dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
 license = "MIT"
 readme = "README.md"
-homepage = "link"
-repository = "link"
-documentation = "link"
+homepage = "https://github.com/flix-tech/depcheck"
+repository = "https://github.com/flix-tech/depcheck"
+documentation = "https://github.com/flix-tech/depcheck"
 keywords = [
-    "DepCheck",
+    "depcheck",
     "Dependency Checker",
     "Clean Architecture",
     "Hexagonal Architecture"
