@@ -1,0 +1,9 @@
+layers:
+  layer_1:
+    - root_package.package_1
+  layer_2:
+    - root_package.package_2
+whitelist:
+  layer_1: ~
+  layer_2:
+    - layer_1
