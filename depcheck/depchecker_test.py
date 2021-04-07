@@ -13,7 +13,7 @@ def ruleset() -> Ruleset:
     """
     This is a simple ruleset which includes two layers which are layer_1 and layer_2.
     - Depended modules of each layer take place in the 'layers' part.
-        e.g. layer_1 is depending on the 'planet.domain' module.
+        e.g. layer_1 is depending on the 'root_package.package_1' module.
     - Dependencies between layers are configured in the 'whitelist' part. e.g:
         - 'layer_1: ~': layer_1 should not depend on any layers
         - 'layer_2: layer_1': layer_2 is allowed to depend on layer_1
@@ -21,9 +21,9 @@ def ruleset() -> Ruleset:
     config_yaml = '''
             layers:
               layer_1:
-                - planet.domain
+                - root_package.package_1
               layer_2:
-              - planet.usecase
+              - root_package.package_2
             whitelist:
               layer_1: ~
               layer_2:
@@ -38,88 +38,120 @@ def ruleset() -> Ruleset:
 @fixture
 def valid_dependencies() -> dict[str, Any]:
     """
-    - 'planet.domain' module inside 'layer_1' doesn't import any modules.
+    - 'root_package.package_1' module inside 'layer_1' doesn't import any modules.
     i.e. layer_1 doesn't depend on any layers.
-    - 'planet.usecase' module inside 'layer_2' depends on the 'planet.domain'
+    - 'root_package.package_2' module inside 'layer_2' depends on the 'root_package.package_1'
     module inside 'layer_1'. i.e. layer_2 depends on layer_1
     """
     return json.loads('''
-            {
-            "__main__": {
-                "imports": [
-                    "planet",
-                    "planet.domain",
-                    "planet.usecase"
-                ],
-                "name": "__main__"
-            },
-            "planet": {
-                "imported_by": [
-                    "planet.usecase"
-                ],
-                "name": "planet"
-            },
-            "planet.domain": {
-                "imported_by": [
-                    "planet.usecase"
-                ],
-                "name": "planet.domain"
-            },
-            "planet.usecase": {
-                "imports": [
-                    "planet",
-                    "planet.domain"
-                ],
-                "name": "planet.usecase"
-            }
-        }
-    ''')
+                {
+                    "__main__": {
+                        "bacon": 0,
+                        "imports": [
+                            "root_package",
+                            "root_package.__main__",
+                            "root_package.package_1",
+                            "root_package.package_1.model",
+                            "root_package.package_2",
+                            "root_package.package_2.usecase"
+                        ],
+                        "name": "__main__"
+                    },
+                    "root_package": {
+                        "bacon": 1,
+                        "imports": [
+                            "root_package",
+                            "root_package.package_1",
+                            "root_package.package_2"
+                        ],
+                        "name": "root_package"
+                    },
+                    "root_package.__main__": {
+                        "bacon": 1,
+                        "name": "root_package.__main__"
+                    },
+                    "root_package.package_1": {
+                        "bacon": 1,
+                        "name": "root_package.package_1"
+                    },
+                    "root_package.package_1.model": {
+                        "bacon": 1,
+                        "name": "root_package.package_1.model"
+                    },
+                    "root_package.package_2": {
+                        "bacon": 1,
+                        "name": "root_package.package_2"
+                    },
+                    "root_package.package_2.usecase": {
+                        "bacon": 1,
+                        "imports": [
+                            "root_package",
+                            "root_package.package_1",
+                            "root_package.package_1.model"
+                        ],
+                        "name": "root_package.package_2.usecase"
+                    }
+                }
+
+        ''')
 
 
 @fixture
 def forbidden_dependencies() -> dict[str, Any]:
     """
-        - 'planet.domain' module inside 'layer_1' depends on the 'planet.usecase'
+        - 'root_package.package_1' module inside 'layer_1' depends on the 'root_package.package_2'
         module inside 'layer_2'. i.e. layer_1 depends on layer_2
-        - 'planet.usecase' module inside 'layer_2' depends on the 'planet.domain'
+        - 'root_package.package_2' module inside 'layer_2' depends on the 'root_package.package_1'
         module inside 'layer_1'. i.e. layer_2 depends on layer_1
         """
     return json.loads('''
                 {
-                "__main__": {
-                    "imports": [
-                        "planet",
-                        "planet.domain",
-                        "planet.usecase"
-                    ],
-                    "name": "__main__"
-                },
-                "planet": {
-                    "imported_by": [
-                        "planet.usecase"
-                    ],
-                    "name": "planet"
-                },
-                "planet.domain": {
-                    "imports": [
-                        "planet.usecase"
-                    ],
-                    "imported_by": [
-                        "planet.usecase"
-                    ],
-                    "name": "planet.domain"
-                },
-                "planet.usecase": {
-                    "name": "planet.usecase",
-                    "imported_by": [
-                        "planet.domain"
-                    ],
-                    "imports": [
-                        "planet",
-                        "planet.domain"
-                    ]
+                    "__main__": {
+                        "imports": [
+                            "root_package",
+                            "root_package.__main__",
+                            "root_package.package_1",
+                            "root_package.package_1.model",
+                            "root_package.package_2",
+                            "root_package.package_2.usecase"
+                        ],
+                        "name": "__main__"
+                    },
+                    "root_package": {
+                        "imports": [
+                            "root_package",
+                            "root_package.package_1",
+                            "root_package.package_2"
+                        ],
+                        "name": "root_package"
+                    },
+                    "root_package.package_1": {
+                        "bacon": 1,
+                        "name": "root_package.package_1"
+                    },
+                    "root_package.package_1.model": {
+                        "bacon": 1,
+                        "name": "root_package.package_1.model"
+                    },
+                    "root_package.package_2": {
+                        "bacon": 1,
+                        "name": "root_package.package_2"
+                    },
+                    "root_package.package_1.model": {
+                        "imports": [
+                            "root_package.package_2.usecase"
+                        ],
+                        "name": "root_package.package_1.model"
+                    },
+                    "root_package.package_2.usecase": {
+                        "imports": [
+                            "root_package",
+                            "root_package.package_1",
+                            "root_package.package_1.model"
+                        ],
+                        "name": "root_package.package_2.usecase"
+                    }
                 }
-            }
         ''')
 
 
