@@ -1,4 +1,7 @@
-# Depcheck
+![Depcheck: Dependency Checker](/docs/.img/depcheck_logo.jpg)
+
+[![pipeline status](https://git.flix.tech/network/optimization/depcheck/badges/master/pipeline.svg)](https://git.flix.tech/network/optimization/depcheck/-/commits/master)
+
 Depcheck is a tool to check package-dependencies between predefined layers. In the configuration file(`.depcheck.yml`) located in the project root, which packages belong to which layers and allowed dependencies between layers are configurable. In this way, you can make sure that the application always complies with the <a href="https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)">Hexagonal Architecture</a> principle of creating loosely coupled application components.
 
 ## Usage
