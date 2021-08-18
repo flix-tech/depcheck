@@ -1,6 +1,11 @@
 ![Depcheck: Dependency Checker](/docs/.img/depcheck_logo.jpg)
 
-Depcheck is a tool to check package-dependencies between predefined layers. In the configuration file(`.depcheck.yml`) located in the project root, which packages belong to which layers and allowed dependencies between layers are configurable. In this way, you can make sure that the application always complies with the <a href="https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)">Hexagonal Architecture</a> principle of creating loosely coupled application components.
+Depcheck is a tool to check package-dependencies between predefined layers. 
+In the configuration file(`.depcheck.yml`) located in the project root, which 
+packages belong to which layers and allowed dependencies between layers are 
+configurable. In this way, you can make sure that the application always 
+complies with the [Hexagonal Architecture][hexagonal_architecture] principle 
+of creating loosely coupled application components.
 
 ## Usage
 Let's say you have a project with the directory structure below:
@@ -18,7 +23,12 @@ project_directory
     ```shell
     depcheck root_package
     ```
-- As you can see in the directory structure above, we have `.depcheck.yml` configuration file in the project directory. If you would like to change the path of the configuration file, use `-f` or `--file` argument:
+- As you can see in the directory structure above, we have `.depcheck.yml` 
+  configuration file in the project directory. If you would like to change 
+  the path of the configuration file, use `-f` or `--file` argument:
     ```shell
     depcheck root_package -f config/customized_depcheck.yml
     ```
+
+<!-- Links -->
+[hexagonal_architecture]: https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)
