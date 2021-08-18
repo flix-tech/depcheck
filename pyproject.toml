@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "depcheck"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
 description = "Depcheck is a tool to check package dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
 license = "MIT"
@@ -16,7 +16,7 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.9.6"
 pydeps = "^1.9.13"
 PyYAML = "^5.4.1"
 
