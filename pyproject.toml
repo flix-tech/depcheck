@@ -16,7 +16,7 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9.6"
+python = "^3.6"
 pydeps = "^1.9.13"
 PyYAML = "^5.4.1"
 
