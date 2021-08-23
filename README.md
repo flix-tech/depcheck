@@ -18,10 +18,12 @@ project_directory
         package-1
         package-2
         main.py
+        __init__.py
     README.md
     .gitignore
     .depcheck.yml
 ```
+Note: Package directories should contain **__init__.py** to be recognized as a package.
 - Navigate to the `project_directory` then run `depcheck` for your project:
     ```shell
     depcheck root_package
