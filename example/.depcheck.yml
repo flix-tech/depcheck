@@ -1,8 +1,8 @@
 layers:
   layer_1:
-    - root_package.package_1
+    - root.foo
   layer_2:
-    - root_package.package_2
+    - root.bar
 whitelist:
   layer_1: ~
   layer_2:

@@ -13,26 +13,26 @@ Install from [Pypi][pypi-link] via `pip install depcheck`
 ## Usage
 Let's say you have a project with the directory structure below:
 ```text
-project_directory
-    root_package
-        package-1
-        package-2
+example
+    root
+        foo
+        bar
         main.py
         __init__.py
     README.md
     .gitignore
     .depcheck.yml
 ```
-Note: Package directories should contain **__init__.py** to be recognized as a package.
-- Navigate to the `project_directory` then run `depcheck` for your project:
+Note: Package directories should contain **\_\_init\_\_.py** to be recognized as a package.
+- Navigate to the `exampe` then run `depcheck` for your project:
     ```shell
-    depcheck root_package
+    depcheck root
     ```
 - As you can see in the directory structure above, we have `.depcheck.yml` 
   configuration file in the project directory. If you would like to change 
   the path of the configuration file, use `-f` or `--file` argument:
     ```shell
-    depcheck root_package -f config/customized_depcheck.yml
+    depcheck root -f /path/to/your/custom/depcheck.yml
     ```
 
 ## Contributing
