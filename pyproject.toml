@@ -24,6 +24,10 @@ pytest = "^6.2.2"
 pyre-check = "^0.9.0"
 flake8 = "^3.9.0"
 coverage = "^5.5"
+black = {version = "^21.7b0", python = "^3.6.2"}
+
+[tool.black]
+line-length = 119
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
