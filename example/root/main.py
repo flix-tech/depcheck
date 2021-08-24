@@ -1,4 +1,4 @@
-from package_2.usecase import GetHelloQuery, GetHelloHandler
+from bar.usecase import GetHelloQuery, GetHelloHandler
 
 query = GetHelloQuery('depcheck')
 

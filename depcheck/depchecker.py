@@ -1,15 +1,15 @@
 import pprint
 import sys
+from typing import List, Set
 
-from depcheck.models import Ruleset, DependencyReport
+from depcheck.models import DependencyReport, Ruleset
 
 
 class DepChecker:
     __ruleset: Ruleset
     __dependency_report: DependencyReport
 
-    def __init__(self, ruleset: Ruleset,
-                 dependency_report: DependencyReport) -> None:
+    def __init__(self, ruleset: Ruleset, dependency_report: DependencyReport) -> None:
         self.__ruleset = ruleset
         self.__dependency_report = dependency_report
 
@@ -29,10 +29,10 @@ class DepChecker:
             print("OK")
             sys.exit(0)
 
-    def __check_rule(self, layer: str) -> list[str]:
-        violation: list[str] = []
-        layer_deps: set[str] = self.__dependency_report.layer_dependencies(layer)
-        whitelist: set[str] = self.__dependency_report.whitelist(layer)
+    def __check_rule(self, layer: str) -> List[str]:
+        violation: List[str] = []
+        layer_deps: Set[str] = self.__dependency_report.layer_dependencies(layer)
+        whitelist: Set[str] = self.__dependency_report.whitelist(layer)
 
         # Since some packages depend on the root package but the whitelist doesn't have
         # the root package explicitly, we need to add it to the whitelist.

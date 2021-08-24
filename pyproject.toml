@@ -1,34 +1,38 @@
 [tool.poetry]
 name = "depcheck"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
-description = "Depcheck is a tool to check package dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
+description = "Supports adopting a layered architecture in your Python application"
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/flix-tech/depcheck"
 repository = "https://github.com/flix-tech/depcheck"
 documentation = "https://github.com/flix-tech/depcheck"
 keywords = [
-    "depcheck",
-    "Dependency Checker",
-    "Clean Architecture",
-    "Hexagonal Architecture"
+    "dependencies",
+    "architecture",
+    "jdepend",
+    "deptrac"
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9.6"
+python = "^3.6"
 pydeps = "^1.9.13"
-PyYAML = "^5.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
 pyre-check = "^0.9.0"
 flake8 = "^3.9.0"
-yamllint = "^1.26.1"
 coverage = "^5.5"
+black = {version = "^21.7b0", python = "^3.6.2"}
+isort = {version = "^5.9.3", python = "^3.6.1"}
 
-[tool.poetry.extras]
-pyre = ["pyre-check"]
+[tool.black]
+line-length = 119
+
+[tool.isort]
+profile = "black"
+line_length = 119
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

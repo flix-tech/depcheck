@@ -8,6 +8,3 @@ indent_style = space
 
 [{*.py,*.md}]
 indent_size = 4
-
-[{*.json,*.yaml}]
-indent_size = 2
