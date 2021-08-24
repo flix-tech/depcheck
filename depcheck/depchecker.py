@@ -1,8 +1,8 @@
 import pprint
 import sys
-from typing import Set, List
+from typing import List, Set
 
-from depcheck.models import Ruleset, DependencyReport
+from depcheck.models import DependencyReport, Ruleset
 
 
 class DepChecker:

@@ -1,4 +1,4 @@
-from typing import Any, List, Dict, Set
+from typing import Any, Dict, List, Set
 
 from depcheck.util import flatten
 

@@ -2,10 +2,10 @@ import json
 from typing import Any, Dict
 
 import yaml
-from pytest import raises, fixture
+from pytest import fixture, raises
 
 from depcheck.depchecker import DepChecker
-from depcheck.models import Ruleset, DependencyReport
+from depcheck.models import DependencyReport, Ruleset
 
 
 @fixture()

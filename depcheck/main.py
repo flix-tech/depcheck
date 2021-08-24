@@ -1,8 +1,8 @@
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
 from depcheck.depchecker import DepChecker
-from depcheck.models import Ruleset, DependencyReport
-from depcheck.readers import RulesetReader, DependencyReader
+from depcheck.models import DependencyReport, Ruleset
+from depcheck.readers import DependencyReader, RulesetReader
 
 DEFAULT_CONFIG_FILE_PATH = ".depcheck.yml"
 

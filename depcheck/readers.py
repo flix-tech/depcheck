@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 import yaml
 
-from depcheck.models import Ruleset, DependencyReport
+from depcheck.models import DependencyReport, Ruleset
 
 
 class RulesetReader:
