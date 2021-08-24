@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "depcheck"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
 description = "Supports adopting a layered architecture in your Python application"
 license = "MIT"
