@@ -1,11 +1,9 @@
-![Depcheck: Dependency Checker](/docs/.img/depcheck_logo.jpg)
+![Depcheck: Dependency Checker](https://images2.imgbox.com/da/85/J5OEzbAH_o.jpg)
 
-Depcheck is a tool to check package-dependencies between predefined layers. 
-In the configuration file(`.depcheck.yml`) located in the project root, 
-which packages belong to which layers and allowed dependencies between 
-layers are configurable. In this way, you can make sure that the application 
-always complies with the [Hexagonal Architecture][hexagonal-architecture] 
-principle of creating loosely coupled application components.
+Depcheck is a command line code-quality tool which supports adopting a 
+layered architecture by making it possible to specify dependency constraints
+between packages of your own Python application. 
+The tool aims to achieve the same goals as [Deptrac][deptrac] in PHP and [JDepend][jdepend] in Java
 
 ## Install
 Install from [Pypi][pypi-link] via `pip install depcheck`
@@ -36,13 +34,7 @@ Note: Package directories should contain **\_\_init\_\_.py** to be recognized as
     ```
 
 ## Contributing
-All contributions are welcomed! Start by searching through the [issues][issues] and 
-[pull requests][pull-requests] to see whether someone else has raised a similar idea or question.
-If you don't see your idea listed, open a pull request.
-
-## Maintenance Work
-- [Upgrade project's Python version][upgrade-python-version]
-- [Update project dependencies][update-project-dependencies]
+All contributions are welcomed! See our [CONTRIBUTING.md][contribution] document.
 
 
 <!-- Links -->
@@ -50,5 +42,6 @@ If you don't see your idea listed, open a pull request.
 [upgrade-python-version]: ./docs/upgrade-python-version.md
 [update-project-dependencies]: ./docs/upgrade-python-version.md
 [pypi-link]: https://pypi.org/project/depcheck/
-[issues]: https://github.com/flix-tech/depcheck/issues
-[pull-requests]: https://github.com/flix-tech/depcheck/pulls
+[contribution]: ./CONTRIBUTING.md
+[deptrac]: https://github.com/qossmic/deptrac
+[jdepend]: https://github.com/clarkware/jdepend

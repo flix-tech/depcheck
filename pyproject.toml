@@ -2,17 +2,17 @@
 name = "depcheck"
 version = "0.1.1"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
-description = "Depcheck is a tool to check package dependencies between predefined layers to make sure that the application always complies with the Hexagonal Architecture principle of creating loosely coupled application components."
+description = "Supports adopting a layered architecture in your Python application"
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/flix-tech/depcheck"
 repository = "https://github.com/flix-tech/depcheck"
 documentation = "https://github.com/flix-tech/depcheck"
 keywords = [
-    "depcheck",
-    "Dependency Checker",
-    "Clean Architecture",
-    "Hexagonal Architecture"
+    "dependencies",
+    "architecture",
+    "jdepend",
+    "deptrac"
 ]
 
 [tool.poetry.dependencies]
