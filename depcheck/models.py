@@ -7,8 +7,7 @@ class Ruleset:
     __rules: Dict[str, List[str]]
     __layers: Dict[str, List[str]]
 
-    def __init__(self, layers: Dict[str, List[str]],
-                 rules: Dict[str, List[str]]) -> None:
+    def __init__(self, layers: Dict[str, List[str]], rules: Dict[str, List[str]]) -> None:
         self.__rules = rules
         self.__layers = layers
 
@@ -32,8 +31,7 @@ class DependencyReport:
     __graph: Dict[str, Any]
     __all_packages: List[str]
 
-    def __init__(self, ruleset: Ruleset,
-                 dependency_graph: Dict[str, Any]) -> None:
+    def __init__(self, ruleset: Ruleset, dependency_graph: Dict[str, Any]) -> None:
         self.__ruleset = ruleset
         self.__graph = dependency_graph
         self.__all_packages = list(self.__graph.keys())
@@ -51,7 +49,7 @@ class DependencyReport:
 
     @property
     def root_package(self) -> str:
-        return self.__graph['__main__']['imports'][0]
+        return self.__graph["__main__"]["imports"][0]
 
     @staticmethod
     def __exclude_inner_dependencies(raw_dependencies: Set[str], layers: Set[str]) -> Set[str]:
@@ -62,8 +60,7 @@ class DependencyReport:
             return set()
 
         # Packages within given layers
-        layer_packages: List[str] = flatten([self.__ruleset.layer_packages(layer)
-                                             for layer in layers])
+        layer_packages: List[str] = flatten([self.__ruleset.layer_packages(layer) for layer in layers])
 
         # Include subpackages of layer_packages
         layer_packages.extend(self.__subpackages(layer_packages))
@@ -84,4 +81,4 @@ class DependencyReport:
         Returns all packages that are used(imported) in given 'packages'.
         In other words, this returns dependencies of given 'packages'.
         """
-        return set(flatten([self.__graph.get(i, {}).get('imports', []) for i in packages]))
+        return set(flatten([self.__graph.get(i, {}).get("imports", []) for i in packages]))

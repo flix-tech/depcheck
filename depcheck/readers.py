@@ -16,14 +16,15 @@ class RulesetReader:
     def read(self) -> Ruleset:
         ruleset: Dict[str, Any]
 
-        with open(self.__filename, 'r') as stream:
+        with open(self.__filename, "r") as stream:
             try:
                 ruleset = yaml.safe_load(stream)
             except yaml.YAMLError:
-                print('\n\n[!] Command must be run from project root '
-                      'and .depcheck.yml file should be in the root\n\n')
+                print(
+                    "\n\n[!] Command must be run from project root " "and .depcheck.yml file should be in the root\n\n"
+                )
 
-        return Ruleset(layers=ruleset['layers'], rules=ruleset['whitelist'])
+        return Ruleset(layers=ruleset["layers"], rules=ruleset["whitelist"])
 
 
 class DependencyReader:
@@ -35,9 +36,13 @@ class DependencyReader:
         self.__root_package = root_package
 
     def read(self) -> DependencyReport:
-        output = subprocess.check_output("pydeps --show-deps --no-show --no-output --max-bacon 2 "
-                                         + self.__root_package,
-                                         shell=True).decode('u8').strip()
+        output = (
+            subprocess.check_output(
+                "pydeps --show-deps --no-show --no-output --max-bacon 2 " + self.__root_package, shell=True
+            )
+            .decode("u8")
+            .strip()
+        )
         dependency_graph: Dict[str, Any] = json.loads(output)
 
         return DependencyReport(self.__ruleset, dependency_graph)

@@ -18,7 +18,7 @@ def ruleset() -> Ruleset:
         - 'layer_1: ~': layer_1 should not depend on any layers
         - 'layer_2: layer_1': layer_2 is allowed to depend on layer_1
     """
-    config_yaml = '''
+    config_yaml = """
             layers:
               layer_1:
                 - root_package.package_1
@@ -28,11 +28,11 @@ def ruleset() -> Ruleset:
               layer_1: ~
               layer_2:
                 - layer_1
-    '''
+    """
 
     ruleset = yaml.safe_load(config_yaml)
 
-    return Ruleset(layers=ruleset['layers'], rules=ruleset['whitelist'])
+    return Ruleset(layers=ruleset["layers"], rules=ruleset["whitelist"])
 
 
 @fixture
@@ -43,7 +43,8 @@ def valid_dependencies() -> Dict[str, Any]:
     - 'root_package.package_2' module inside 'layer_2' depends on the 'root_package.package_1'
     module inside 'layer_1'. i.e. layer_2 depends on layer_1
     """
-    return json.loads('''
+    return json.loads(
+        """
                 {
                     "__main__": {
                         "bacon": 0,
@@ -93,18 +94,20 @@ def valid_dependencies() -> Dict[str, Any]:
                     }
                 }
 
-        ''')
+        """
+    )
 
 
 @fixture
 def forbidden_dependencies() -> Dict[str, Any]:
     """
-        - 'root_package.package_1' module inside 'layer_1' depends on the 'root_package.package_2'
-        module inside 'layer_2'. i.e. layer_1 depends on layer_2
-        - 'root_package.package_2' module inside 'layer_2' depends on the 'root_package.package_1'
-        module inside 'layer_1'. i.e. layer_2 depends on layer_1
+    - 'root_package.package_1' module inside 'layer_1' depends on the 'root_package.package_2'
+    module inside 'layer_2'. i.e. layer_1 depends on layer_2
+    - 'root_package.package_2' module inside 'layer_2' depends on the 'root_package.package_1'
+    module inside 'layer_1'. i.e. layer_2 depends on layer_1
+    """
+    return json.loads(
         """
-    return json.loads('''
                 {
                     "__main__": {
                         "imports": [
@@ -152,11 +155,11 @@ def forbidden_dependencies() -> Dict[str, Any]:
                         "name": "root_package.package_2.usecase"
                     }
                 }
-        ''')
+        """
+    )
 
 
-def test_project_dependencies_are_valid(ruleset: Ruleset,
-                                        valid_dependencies: Dict[str, Any]) -> None:
+def test_project_dependencies_are_valid(ruleset: Ruleset, valid_dependencies: Dict[str, Any]) -> None:
     dependency_report: DependencyReport = DependencyReport(ruleset, valid_dependencies)
 
     with raises(SystemExit) as exception:
@@ -166,8 +169,7 @@ def test_project_dependencies_are_valid(ruleset: Ruleset,
     assert exception.value.code == 0
 
 
-def test_project_dependencies_are_forbidden(ruleset: Ruleset,
-                                            forbidden_dependencies: Dict[str, Any]) -> None:
+def test_project_dependencies_are_forbidden(ruleset: Ruleset, forbidden_dependencies: Dict[str, Any]) -> None:
     dependency_report: DependencyReport = DependencyReport(ruleset, forbidden_dependencies)
 
     with raises(SystemExit) as exception:

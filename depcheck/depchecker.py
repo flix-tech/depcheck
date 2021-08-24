@@ -9,8 +9,7 @@ class DepChecker:
     __ruleset: Ruleset
     __dependency_report: DependencyReport
 
-    def __init__(self, ruleset: Ruleset,
-                 dependency_report: DependencyReport) -> None:
+    def __init__(self, ruleset: Ruleset, dependency_report: DependencyReport) -> None:
         self.__ruleset = ruleset
         self.__dependency_report = dependency_report
 

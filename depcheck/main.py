@@ -21,10 +21,7 @@ def main() -> None:
 
 
 def add_arguments(parser: ArgumentParser) -> None:
-    parser.add_argument(
-        "root_package",
-        help="Root package of the project"
-    )
+    parser.add_argument("root_package", help="Root package of the project")
 
     parser.add_argument(
         "-f",
