@@ -1,5 +1,5 @@
 import json
-from typing import Any
+from typing import Any, Dict
 
 import yaml
 from pytest import raises, fixture
@@ -36,7 +36,7 @@ def ruleset() -> Ruleset:
 
 
 @fixture
-def valid_dependencies() -> dict[str, Any]:
+def valid_dependencies() -> Dict[str, Any]:
     """
     - 'root_package.package_1' module inside 'layer_1' doesn't import any modules.
     i.e. layer_1 doesn't depend on any layers.
@@ -97,7 +97,7 @@ def valid_dependencies() -> dict[str, Any]:
 
 
 @fixture
-def forbidden_dependencies() -> dict[str, Any]:
+def forbidden_dependencies() -> Dict[str, Any]:
     """
         - 'root_package.package_1' module inside 'layer_1' depends on the 'root_package.package_2'
         module inside 'layer_2'. i.e. layer_1 depends on layer_2
@@ -156,7 +156,7 @@ def forbidden_dependencies() -> dict[str, Any]:
 
 
 def test_project_dependencies_are_valid(ruleset: Ruleset,
-                                        valid_dependencies: dict[str, Any]) -> None:
+                                        valid_dependencies: Dict[str, Any]) -> None:
     dependency_report: DependencyReport = DependencyReport(ruleset, valid_dependencies)
 
     with raises(SystemExit) as exception:
@@ -167,7 +167,7 @@ def test_project_dependencies_are_valid(ruleset: Ruleset,
 
 
 def test_project_dependencies_are_forbidden(ruleset: Ruleset,
-                                            forbidden_dependencies: dict[str, Any]) -> None:
+                                            forbidden_dependencies: Dict[str, Any]) -> None:
     dependency_report: DependencyReport = DependencyReport(ruleset, forbidden_dependencies)
 
     with raises(SystemExit) as exception:

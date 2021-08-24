@@ -1,5 +1,6 @@
 import pprint
 import sys
+from typing import Set, List
 
 from depcheck.models import Ruleset, DependencyReport
 
@@ -29,10 +30,10 @@ class DepChecker:
             print("OK")
             sys.exit(0)
 
-    def __check_rule(self, layer: str) -> list[str]:
-        violation: list[str] = []
-        layer_deps: set[str] = self.__dependency_report.layer_dependencies(layer)
-        whitelist: set[str] = self.__dependency_report.whitelist(layer)
+    def __check_rule(self, layer: str) -> List[str]:
+        violation: List[str] = []
+        layer_deps: Set[str] = self.__dependency_report.layer_dependencies(layer)
+        whitelist: Set[str] = self.__dependency_report.whitelist(layer)
 
         # Since some packages depend on the root package but the whitelist doesn't have
         # the root package explicitly, we need to add it to the whitelist.

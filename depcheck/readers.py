@@ -1,6 +1,6 @@
 import json
 import subprocess
-from typing import Any
+from typing import Any, Dict
 
 import yaml
 
@@ -14,7 +14,7 @@ class RulesetReader:
         self.__filename = filename
 
     def read(self) -> Ruleset:
-        ruleset: dict[str, Any]
+        ruleset: Dict[str, Any]
 
         with open(self.__filename, 'r') as stream:
             try:
@@ -38,6 +38,6 @@ class DependencyReader:
         output = subprocess.check_output("pydeps --show-deps --no-show --no-output --max-bacon 2 "
                                          + self.__root_package,
                                          shell=True).decode('u8').strip()
-        dependency_graph: dict[str, Any] = json.loads(output)
+        dependency_graph: Dict[str, Any] = json.loads(output)
 
         return DependencyReport(self.__ruleset, dependency_graph)
