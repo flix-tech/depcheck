@@ -1,31 +1,25 @@
 [tool.poetry]
 name = "depcheck"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
-description = "Supports adopting a layered architecture in your Python application"
+description = "Python code quality package that helps in defining and restricting how components of your code may interact"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/flix-tech/depcheck"
+homepage = "https://flix.careers"
 repository = "https://github.com/flix-tech/depcheck"
-documentation = "https://github.com/flix-tech/depcheck"
-keywords = [
-    "dependencies",
-    "architecture",
-    "jdepend",
-    "deptrac"
-]
+keywords = ["dependencies", "hexagonal", "architecture", "jdepend", "deptrac"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-pydeps = "^1.9.13"
+python = "^3.8.1"
+pydeps = "^1.12.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.2"
+pytest = "^7.3.0"
 pyre-check = "^0.9.0"
-flake8 = "^3.9.0"
-coverage = "^5.5"
-black = {version = "^21.7b0", python = "^3.6.2"}
-isort = {version = "^5.9.3", python = "^3.6.1"}
+flake8 = "^6.0.0"
+coverage = "^7.2.0"
+black = "^23.3.0"
+isort = "^5.12.0"
 
 [tool.black]
 line-length = 119
@@ -39,4 +33,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-depcheck = 'depcheck.main:main'
+depcheck = 'depcheck:run_depcheck'
