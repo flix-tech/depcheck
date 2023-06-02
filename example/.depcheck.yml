@@ -1,9 +1,24 @@
 layers:
-  layer_1:
-    - root.foo
-  layer_2:
-    - root.bar
+  booking:
+    - example.booking
+  commands:
+    - example.commands
+  customer:
+    - example.customer
+  payments:
+    - example.payments
+  products:
+    - example.products
+  prices:
+    - example.products.prices
+  account:
+    - example.customer.account
+
 whitelist:
-  layer_1: ~
-  layer_2:
-    - layer_1
+  booking: ~
+  commands: ~
+  customer: ~
+  payments: ~
+  products: ~
+  prices: ~
+  account: ~
