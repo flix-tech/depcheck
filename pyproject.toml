@@ -5,8 +5,9 @@ authors = ["FlixMobility Tech <open-source@flixbus.com>"]
 description = "Python code quality package that helps in defining and restricting how components of your code may interact"
 license = "MIT"
 readme = "README.md"
-homepage = "https://flix.careers"
-repository = "github.com/flix-tech/depcheck"
+homepage = "https://github.com/flix-tech/depcheck"
+repository = "https://github.com/flix-tech/depcheck"
+documentation = "https://github.com/flix-tech/depcheck"
 keywords = ["dependencies", "hexagonal", "architecture", "jdepend", "deptrac"]
 
 [tool.poetry.dependencies]
