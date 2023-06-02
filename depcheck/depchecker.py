@@ -1,4 +1,3 @@
-import pprint
 import sys
 from typing import List, Set
 
@@ -16,27 +15,38 @@ class DepChecker:
     def run(self) -> None:
         # Check dependencies if there is any violation for given ruleset
         errors = {}
+
         for layer in self.__ruleset.rules:
-            violations = self.__check_rule(layer)
+            layer_defined_packages = self.__ruleset.layers[layer]
+            detected_dependencies = self.__dependency_report.layer_dependencies(layer)
+
+            print(f"\n### LAYER: '{layer}' WITH PACKAGES: {layer_defined_packages}")
+            print(f"    DEPENDENCIES DETECTED:\n\t{detected_dependencies if detected_dependencies else 'none'}")
+
+            violations = self.__check_rules(layer)
             if len(violations) > 0:
                 errors[layer] = violations
 
+        print("\n")
+
         if errors:
-            print(f"There are {len(errors)} forbidden dependencies:")
-            pprint.pprint(errors)
+            print(f"!!! {len(errors)} ILLEGAL DEPENDENCIES FOUND:")
+            packages_to_layers = self.__ruleset.packages_to_layers
+            for layer, illegal_dependency_pkg in errors.items():
+                for dependency in illegal_dependency_pkg:
+                    illegal_layer_name = "?"
+                    if dependency in packages_to_layers:
+                        illegal_layer_name = packages_to_layers[dependency]
+                    print(f"- Layer '{layer}' depends on '{dependency}' (Layer: {illegal_layer_name})")
             sys.exit(1)
         else:
-            print("OK")
+            print("OK! All package dependencies look good!")
             sys.exit(0)
 
-    def __check_rule(self, layer: str) -> List[str]:
+    def __check_rules(self, layer: str) -> List[str]:
         violation: List[str] = []
         layer_deps: Set[str] = self.__dependency_report.layer_dependencies(layer)
         whitelist: Set[str] = self.__dependency_report.whitelist(layer)
-
-        # Since some packages depend on the root package but the whitelist doesn't have
-        # the root package explicitly, we need to add it to the whitelist.
-        whitelist.add(self.__dependency_report.root_package)
 
         black_list = layer_deps.difference(whitelist)
 

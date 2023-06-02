@@ -24,7 +24,7 @@ class RulesetReader:
                     "\n\n[!] Command must be run from project root " "and .depcheck.yml file should be in the root\n\n"
                 )
 
-        return Ruleset(layers=ruleset["layers"], rules=ruleset["whitelist"])
+        return Ruleset(ruleset["layers"], ruleset["whitelist"])
 
 
 class DependencyReader:
@@ -38,11 +38,12 @@ class DependencyReader:
     def read(self) -> DependencyReport:
         output = (
             subprocess.check_output(
-                "pydeps --show-deps --no-show --no-output --max-bacon 2 " + self.__root_package, shell=True
+                f"pydeps --show-deps --no-show --no-output --max-bacon 2 {self.__root_package}", shell=True
             )
             .decode("u8")
             .strip()
         )
-        dependency_graph: Dict[str, Any] = json.loads(output)
+
+        dependency_graph = json.loads(output)
 
         return DependencyReport(self.__ruleset, dependency_graph)
