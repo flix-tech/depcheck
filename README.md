@@ -7,7 +7,7 @@ The tool aims to achieve the same goals as [Deptrac][deptrac] in PHP and [JDepen
 
 ## Install
 Install from [Pypi][pypi-link] via `pip install depcheck`
-    
+
 ## Usage
 Let's say you have a project with the directory structure below:
 ```text
@@ -22,9 +22,10 @@ example
     .depcheck.yml
 ```
 Note: Package directories should contain **\_\_init\_\_.py** to be recognized as a package.
-- Navigate to the `exampe` then run `depcheck` for your project:
+- Navigate to the `example` then run `depcheck` for your project:
     ```shell
-    depcheck root
+    poetry run depcheck example -f .depcheck.ok.yml  # This should be correct
+    poetry run depcheck example -f .depcheck.errors.yml  # This should give errors
     ```
 - As you can see in the directory structure above, we have `.depcheck.yml` 
   configuration file in the project directory. If you would like to change 

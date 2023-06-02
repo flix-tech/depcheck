@@ -1,4 +1,5 @@
 import sys
+from copy import copy
 from importlib import import_module
 from typing import Any, cast
 
@@ -121,22 +122,26 @@ class DependencyReport:
         return set(layer_packages)
 
     def __subpackages(self, layer: str, parent_packages: list[str]) -> list[str]:
-        subpackages: list[str] = []
+        subpackages: set[str] = set()
 
         detected_packages = list(self.__graph.keys())
 
         for parent_package in parent_packages:
             for detected_package in detected_packages:
                 if self.__ruleset.packages_in_same_layer(layer, parent_package, detected_package):
-                    subpackages.append(detected_package)
+                    subpackages.add(detected_package)
 
         pkg_to_layers = self.__ruleset.packages_to_layers
-        for idx, sp in enumerate(subpackages):
-            for pkg, pkg_layer in pkg_to_layers.items():
-                if pkg in sp and pkg_layer != layer:
-                    subpackages.pop(idx)
 
-        return subpackages
+        subp_copy = copy(subpackages)
+        for idx, sp in enumerate(subp_copy):
+            for pkg, pkg_layer in pkg_to_layers.items():
+                if pkg in sp and pkg_layer != layer and sp in subpackages:
+                    # Remove the subpackages that belong in different layers
+                    # eg: if we have layer 1="a" and layer 2="a.b", then "a.b.c" does not belong in layer 1
+                    subpackages.remove(sp)
+
+        return list(subpackages)
 
     def __package_dependencies(self, packages: set[str]) -> set[str]:
         """
