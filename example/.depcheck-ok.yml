@@ -1,0 +1,37 @@
+layers:
+  booking:
+    - example.booking
+  commands:
+    - example.commands
+  customer:
+    - example.customer
+  payments:
+    - example.payments
+  products:
+    - example.products
+  prices:
+    - example.products.prices
+  account:
+    - example.customer.account
+
+whitelist:
+  booking:
+    - products
+  commands:
+    - booking
+    - customer
+    - payments
+    - products
+    - prices
+    - account
+  customer:
+    - account
+  payments:
+    - account
+    - customer
+  products: ~
+  prices:
+    - accounts
+    - products
+    - customer
+  account: ~
