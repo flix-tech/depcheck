@@ -327,7 +327,7 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 name = "pyyaml"
 version = "6.0"
 description = "YAML parser and emitter for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -419,8 +419,8 @@ typing-extensions = ">=3.7.4"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8.1"
-content-hash = "e2993a7114f010bdd95188c39fa7225d0054ae1c2cd7e0cbf06eda34b2635198"
+python-versions = "^3.9"
+content-hash = "13f2b1038c9b129dcb0e920da7ad311b147dda92ece3e19cc2ff56f1f2745a82"
 
 [metadata.files]
 black = [
