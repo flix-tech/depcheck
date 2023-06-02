@@ -12,11 +12,11 @@ def run_depcheck() -> None:
     arg_config_file = command_args.file
     arg_root_package = command_args.root_package
 
-    print(f"[DepCheck] Reading ruleset from '{arg_config_file}'")
+    print(f"** Reading ruleset from '{arg_config_file}'")
     ruleset: Ruleset = RulesetReader(arg_config_file).read()
-    print(f"[DepCheck] Reading project packages from root package: '{arg_root_package}'")
+    print(f"** Reading project packages from root package: '{arg_root_package}'")
     dependency_report: DependencyReport = DependencyReader(ruleset, arg_root_package).read()
-    print("[DepCheck] Checking dependencies")
+    print("** Checking dependencies")
     DepChecker(ruleset, dependency_report).run()
 
 
