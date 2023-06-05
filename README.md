@@ -1,38 +1,36 @@
 ![Depcheck: Dependency Checker](https://images2.imgbox.com/da/85/J5OEzbAH_o.jpg)
 
-Depcheck is a command line code-quality tool which supports adopting a 
-layered architecture by making it possible to specify dependency constraints
-between packages of your own Python application. 
+Depcheck is a command line code-quality tool which supports adopting a layered architecture
+by making it possible to specify dependency constraints between packages of your own Python application.
 The tool aims to achieve the same goals as [Deptrac][deptrac] in PHP and [JDepend][jdepend] in Java
 
 ## Install
-Install from [Pypi][pypi-link] via `pip install depcheck`
+- Via [`poetry`][poetry] (recommended): Install with `poetry add depcheck`
+- Via `pip`: Install from [Pypi][pypi-link] via `pip install depcheck`
 
 ## Usage
-Let's say you have a project with the directory structure below:
-```text
-example
-    root
-        foo
-        bar
-        main.py
-        __init__.py
-    README.md
-    .gitignore
-    .depcheck.yml
+To run via CLI you run:
+```shell
+depcheck <root_dir> -f <config_file>
+
+# Or, with poetry
+poetry run depcheck <root_dir> -f <config_file>
 ```
-Note: Package directories should contain **\_\_init\_\_.py** to be recognized as a package.
-- Navigate to the `example` then run `depcheck` for your project:
-    ```shell
-    poetry run depcheck example -f .depcheck.ok.yml  # This should be correct
-    poetry run depcheck example -f .depcheck.errors.yml  # This should give errors
-    ```
-- As you can see in the directory structure above, we have `.depcheck.yml` 
-  configuration file in the project directory. If you would like to change 
-  the path of the configuration file, use `-f` or `--file` argument:
-    ```shell
-    depcheck root -f /path/to/your/custom/depcheck.yml
-    ```
+
+The `example` directory demonstrates how the tool works.
+
+```shell
+cd example
+
+poetry run depcheck example -f .depcheck.ok.yml  # This should be correct
+poetry run depcheck example -f .depcheck.errors.yml  # This should give errors
+```
+
+To understand how to configure the tool, look inside the YML files. The `-f` argument is optional.
+Implicitly, the tool will look for `.depcheck.yml`.
+
+**NOTE:** Package directories should contain **`\_\_init\_\_.py`** to be recognized as a package.
+
 
 ## Contributing
 All contributions are welcomed! See our [CONTRIBUTING.md][contribution] document.
@@ -46,3 +44,4 @@ All contributions are welcomed! See our [CONTRIBUTING.md][contribution] document
 [contribution]: ./CONTRIBUTING.md
 [deptrac]: https://github.com/qossmic/deptrac
 [jdepend]: https://github.com/clarkware/jdepend
+[poetry]: https://python-poetry.org/
