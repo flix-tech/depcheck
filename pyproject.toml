@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "depcheck"
-version = "0.3"
+version = "0.3.1"
 authors = ["FlixMobility Tech <open-source@flixbus.com>"]
 description = "Python code quality package that helps in defining and restricting how components of your code may interact"
 license = "MIT"
