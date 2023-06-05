@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.3.1]
+- Fix a bug with subpackage identification caused by incorrect matching approach
+
 ## [0.3.0]
 - Increased minimum required Python version to `3.9`
 - Updated version of `pydeps`

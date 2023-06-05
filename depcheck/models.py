@@ -136,7 +136,7 @@ class DependencyReport:
         subp_copy = copy(subpackages)
         for idx, sp in enumerate(subp_copy):
             for pkg, pkg_layer in pkg_to_layers.items():
-                if pkg in sp and pkg_layer != layer and sp in subpackages:
+                if sp.startswith(pkg) and pkg_layer != layer and sp in subpackages:
                     # Remove the subpackages that belong in different layers
                     # eg: if we have layer 1="a" and layer 2="a.b", then "a.b.c" does not belong in layer 1
                     subpackages.remove(sp)
