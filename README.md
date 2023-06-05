@@ -29,7 +29,7 @@ poetry run depcheck example -f .depcheck.errors.yml  # This should give errors
 To understand how to configure the tool, look inside the YML files. The `-f` argument is optional.
 Implicitly, the tool will look for `.depcheck.yml`.
 
-**NOTE:** Package directories should contain **`\_\_init\_\_.py`** to be recognized as a package.
+**NOTE:** Package directories should contain `__init__.py` to be recognized as a package!
 
 
 ## Contributing
