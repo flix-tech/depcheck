@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.3.2]
+- Fix: provide missing logic to exclude parents of nested packages
+
 ## [0.3.1]
 - Fix a bug with subpackage identification caused by incorrect matching approach
 
