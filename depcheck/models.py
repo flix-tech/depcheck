@@ -106,7 +106,15 @@ class DependencyReport:
 
     @staticmethod
     def __exclude_inner_dependencies(raw_dependencies: set[str], layers: set[str]) -> set[str]:
-        return raw_dependencies - layers
+        filtered_deps = []
+        deps = raw_dependencies - layers
+
+        for dep in deps:
+            temp = [lp for lp in layers if lp.startswith(dep)]
+            if len(temp) > 0:
+                continue
+            filtered_deps.append(dep)
+        return set(filtered_deps)
 
     def __layer_packages(self, layers: list[str]) -> set[str]:
         if layers is None:
